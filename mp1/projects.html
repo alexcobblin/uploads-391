@@ -4,14 +4,42 @@
         <meta charset="UTF-8">
         <title> Alex Resume </title>
         <link rel="stylesheet" href="style.css">
+        <script src="calculator.js"></script>
     </head>
     <main>
       <h2>Projects</h2>
       <div class="about-container">
-        <img src="github.png" alt="My Photo" class="profile-photo">
-        <p>
-          <a href="https://github.com/alexcobblin">Here's My github!</a>
-        </p>
+        <div class="projects-section">
+          <h3>Calculator Application</h3>
+      </div>
+
+      <div class="calculator-container">
+          <h3>JavaScript Calculator</h3>
+          
+          <div class="calculator">
+              <div class="inputs">
+                  <input type="number" id="first-number" placeholder="First number">
+                  <input type="number" id="second-number" placeholder="Second number">
+              </div>
+              
+              <div class="buttons">
+                  <button onclick="addition()">+</button>
+                  <button onclick="subtraction()">-</button>
+                  <button onclick="multiplication()">*</button>
+                  <button onclick="division()">/</button>
+                  <button onclick="power()">**</button>
+                  <button onclick="clear()">Clear</button>
+              </div>
+              
+              <div class="output">
+                  <h3 id="output">Result will appear here</h3>
+              </div>
+          </div>
+      </div>
+      <img src="github.png" alt="My Photo" class="profile-photo">
+      <p>
+        <a href="https://github.com/alexcobblin">Here's My github!</a>
+      </p>
       </div>
     </main>
     <body>
