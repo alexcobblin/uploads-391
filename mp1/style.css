@@ -61,19 +61,19 @@ transition: transform 0.2s ease-in-out;
     }
   }
   
-  /* Text next to the image */
   .about-container p {
-    flex: 1;                   /* makes text take remaining space */
+    flex: 1;          
     font-size: calc(14px + 0.3vw);
     line-height: 1.6;
   }
-  /* Layout Containers */
+
+
   header, nav, main, footer {
     width: 90%;
     max-width: 1000px;
     margin: 10px auto;
     padding: 15px;
-    background: #ffffff;
+    background: #ffffff98;
     border-radius: 8px;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
   }
