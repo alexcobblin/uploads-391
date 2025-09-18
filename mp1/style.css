@@ -116,9 +116,9 @@ transition: transform 0.2s ease-in-out;
   }
   @media (max-width: 750px) {
     nav ul {
-      flex-direction: column;      /* align links side by side */
-      justify-content: center;  /* center them horizontally */
-      gap: 10px;                /* spacing between links */
+      flex-direction: column;    
+      justify-content: center;
+      gap: 10px;             
     }
   
     nav li {
