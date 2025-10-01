@@ -40,6 +40,7 @@ interface AgifyResponse {
 export default function App(){
   const [name, setName] = useState<string>("michael");
   const [people, setPeople] = useState<(People & { count: number })[]>([]);
+  const [input, setInput] = useState<string>("michael");
 
     useEffect(() => {
         if (!name) return;
@@ -57,8 +58,8 @@ export default function App(){
         <Input
           type="text"
           placeholder="Enter a name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
         />
         <Button onClick={() => setName(input)}>Search</Button>
 
