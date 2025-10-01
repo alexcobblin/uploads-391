@@ -19,7 +19,7 @@ const SinglePersonDiv = styled.div`
   background-color: lightblue;
   color: black;
   border: 3px darkblue solid;
-  font: italic small-caps bold calc(2px + 1vw) Papyrus, fantasy;
+  font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
   text-align: center;
 `;
 
