@@ -1,0 +1,264 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #f9f9f9;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Root/Page wrapper to prevent white space at bottom */
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Content wrapper for Nav + Main side-by-side layout */
+/* DEFAULT: For screens > 1000px - Side-by-side 30/70 */
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  width: 90%;
+  max-width: 1200px;
+  margin: 10px auto;
+  gap: 15px;
+}
+
+/* Header */
+header {
+  width: 90%;
+  max-width: 1200px;
+  margin: 10px auto;
+  padding: 20px;
+  background: #ffffff98;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size: calc(18px + 1vw);
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: calc(12px + 0.5vw);
+}
+
+/* Navigation */
+/* DEFAULT: Vertical for screens > 750px */
+nav {
+  background: #ffffff98;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  padding: 15px;
+  flex: 0 0 30%; /* 30% width on large screens */
+  min-width: 200px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column; /* Vertical by default */
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  display: block;
+  padding: 22px 20px;
+  background-color: #485bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #8019d9;
+}
+
+/* Main content */
+/* DEFAULT: 70% width for screens > 1000px */
+main {
+  flex: 0 0 70%; /* Takes 70% */
+  background: #ffffff98;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  padding: 20px;
+  min-height: 400px;
+  font-size: calc(14px + 0.5vw);
+}
+
+/* Footer */
+footer {
+  width: 90%;
+  max-width: 1200px;
+  margin: 10px auto;
+  padding: 20px;
+  background: #ffffff98;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  text-align: center;
+  font-size: calc(12px + 0.3vw);
+}
+
+/* About section */
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0;
+  padding: 15px;
+}
+
+.profile-photo {
+  max-width: 200px;
+  border-radius: 8px;
+}
+
+.about-container p {
+  flex: 1;
+  font-size: calc(14px + 0.3vw);
+  line-height: 1.6;
+}
+
+/* Icons */
+.coding-icons,
+.college-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.coding-icons img {
+  width: 100px;
+  height: auto;
+  transition: transform 0.2s ease-in-out;
+}
+
+.coding-icons img:hover {
+  transform: scale(1.1);
+}
+
+.college-icons img {
+  width: clamp(160px, 20vw, 250px);
+  height: auto;
+  transition: transform 0.2s ease-in-out;
+}
+
+.college-icons img:hover {
+  transform: scale(1.05);
+}
+
+/* Calculator */
+.calculator-container {
+  margin: 20px 0;
+  padding: 20px;
+  text-align: center;
+}
+
+.calculator label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.calculator input {
+  margin: 5px 0 10px;
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.calculator button {
+  margin: 5px;
+  padding: 10px 15px;
+  background: #485bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.calculator button:hover {
+  background: #8019d9;
+}
+
+#output {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+}
+
+#output2 {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #969696;
+  background: rgb(255, 140, 140);
+  border-radius: 4px;
+}
+
+/* Media Queries - Using only max-width */
+
+
+/* For screens 750px and smaller - Horizontal Nav */
+@media (max-width: 750px) {
+  main {
+    width: 100%;
+    flex: 1;
+  }
+  .content-wrapper {
+    flex-direction: column;
+  }
+  nav {
+    width: 100%;
+    flex: none;
+  }
+  nav ul {
+    flex-direction: row; /* Horizontal navigation */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav li {
+    flex: 1 1 auto;
+    min-width: 120px;
+  }
+
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-photo {
+    margin-bottom: 15px;
+  }
+
+  .calculator input,
+  .calculator button {
+    display: block;
+    margin: 10px auto;
+    width: 200px;
+  }
+}
