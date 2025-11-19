@@ -1,61 +1,105 @@
 "use client";
+import { useState } from "react";
+import styled from "styled-components";
 import createNewAlias from "@/app/lib/createNewAlias";
 import { UrlProps } from "@/types";
-import { Textarea } from "@mui/joy";
-import { Button, FormHelperText, TextField } from "@mui/material";
-import { useState } from "react";
+
+// Styled components
+const FormWrapper = styled.form`
+  width: 384px; /* w-96 */
+  padding: 1rem;
+  border-radius: 1rem; /* rounded-xl */
+  background-color: #38bdf8; /* bg-sky-400 */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+const Input = styled.input`
+  padding: 0.5rem;
+  border-radius: 0.375rem; /* small rounding */
+  border: none;
+  width: 100%;
+  font-size: 1rem;
+`;
+
+const TextArea = styled.textarea`
+  padding: 0.5rem;
+  height: 100px;
+  width: 100%;
+  border-radius: 0.25rem;
+  border: none;
+  font-size: 1rem;
+`;
+
+const SubmitButton = styled.button<{ disabled: boolean }>`
+  width: 80px;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.375rem;
+  background-color: ${({ disabled }) => (disabled ? "#94a3b8" : "#1d4ed8")};
+  color: white;
+  font-weight: bold;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: ${({ disabled }) => (disabled ? "#94a3b8" : "#2563eb")};
+  }
+`;
+
+const HelperText = styled.div`
+  font-size: 0.85rem;
+  color: #f8fafc;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+`;
 
 export default function NewPostForm({
-    append,
+  append,
 }: {
-    append: (post: UrlProps) => void;
+  append: (post: UrlProps) => void;
 }) {
-    const [alias, setAlias] = useState("");
-    const [url, setUrl] = useState("");
+  const [alias, setAlias] = useState("");
+  const [url, setUrl] = useState("");
 
-    return (
-        <form
-            className="w-96 rounded-xl p-4 bg-sky-400"
-            onSubmit={async (event) => {
-                event.preventDefault();
-                createNewAlias(alias, url)
-                    .then((newPost) => append(newPost))
-                    .catch((err) => console.error(err));
-            }}
-        >
-            <TextField
-                variant="filled"
-                sx={{ backgroundColor: "white", width: "100%" }}
-                label="Alias"
-                value={alias}
-                onChange={(e) => setAlias(e.target.value)}
-            />
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    try {
+      const newPost = await createNewAlias(alias, url);
+      append(newPost);
+      setAlias("");
+      setUrl("");
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-            <Textarea
-                sx={{
-                    padding: "0.5rem",
-                    height: "100px",
-                    width: "100%",
-                    borderRadius: 0,
-                }}
-                variant="soft"
-                placeholder="URL"
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-            />
+  return (
+    <FormWrapper onSubmit={handleSubmit}>
+      <Input
+        placeholder="Alias"
+        value={alias}
+        onChange={(e) => setAlias(e.target.value)}
+      />
 
-            <FormHelperText>Enter an alias and a URL to shorten.</FormHelperText>
+      <TextArea
+        placeholder="URL"
+        value={url}
+        onChange={(e) => setUrl(e.target.value)}
+      />
 
-            <div className="w-full flex justify-center">
-                <Button
-                    sx={{ width: "80px" }}
-                    variant="contained"
-                    type="submit"
-                    disabled={alias === "" || url === ""}
-                >
-                    Create
-                </Button>
-            </div>
-        </form>
-    );
+      <HelperText>Enter an alias and a URL to shorten.</HelperText>
+
+      <ButtonWrapper>
+        <SubmitButton type="submit" disabled={alias === "" || url === ""}>
+          Create
+        </SubmitButton>
+      </ButtonWrapper>
+    </FormWrapper>
+  );
 }
