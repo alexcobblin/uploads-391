@@ -5,15 +5,19 @@ import NewPostForm from "@/components/newUrlForm"; // adjust path if needed
 import { useState } from "react";
 import { UrlProps } from "@/types";
 
-// Styled components
 const MainWrapper = styled.main`
   padding: 2rem;
+  display: grid;
+  place-items: center;
+  background-color: #e0e0e0ff;
+
 `;
 
 const Heading = styled.h1`
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  text-align: center;
 `;
 
 const SubHeading = styled.h2`
@@ -32,11 +36,11 @@ const PostItem = styled.li`
   font-size: 1rem;
 
   a {
-    color: #1d4ed8; /* blue-700 */
+    color: #ff8888ff; /* blue-700 */
     text-decoration: underline;
 
     &:hover {
-      color: #2563eb; /* blue-600 */
+      color: #ff8888ff; /* blue-600 */
     }
   }
 `;

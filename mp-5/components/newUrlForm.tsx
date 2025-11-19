@@ -1,32 +1,33 @@
 "use client";
 import { useState } from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import createNewAlias from "@/app/lib/createNewAlias";
 import { UrlProps } from "@/types";
 
-// Styled components
+
 const FormWrapper = styled.form`
-  width: 384px; /* w-96 */
-  padding: 1rem;
+  width: 400px; /* w-96 */
+  padding: 3rem;
   border-radius: 1rem; /* rounded-xl */
-  background-color: #38bdf8; /* bg-sky-400 */
+  background-color: #f83838ff; /* bg-sky-400 */
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  text-align: center;
 `;
 
 const Input = styled.input`
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 0.375rem; /* small rounding */
   border: none;
-  width: 100%;
+  width: 95%;
   font-size: 1rem;
 `;
 
 const TextArea = styled.textarea`
-  padding: 0.5rem;
-  height: 100px;
-  width: 100%;
+  padding: 1rem;
+  height: 150px;
+  width: 95%;
   border-radius: 0.25rem;
   border: none;
   font-size: 1rem;
@@ -37,20 +38,20 @@ const SubmitButton = styled.button<{ disabled: boolean }>`
   padding: 0.5rem;
   border: none;
   border-radius: 0.375rem;
-  background-color: ${({ disabled }) => (disabled ? "#94a3b8" : "#1d4ed8")};
+  background-color: ${({ disabled }) => (disabled ? "#800062ff" : "#d81d1dff")};
   color: white;
   font-weight: bold;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: ${({ disabled }) => (disabled ? "#94a3b8" : "#2563eb")};
+    background-color: ${({ disabled }) => (disabled ? "#ffc4f1ff" : "#ffa5deff")};
   }
 `;
 
 const HelperText = styled.div`
   font-size: 0.85rem;
-  color: #f8fafc;
+  color: #fcf8fbff;
 `;
 
 const ButtonWrapper = styled.div`
@@ -58,6 +59,7 @@ const ButtonWrapper = styled.div`
   justify-content: center;
   margin-top: 0.5rem;
 `;
+
 
 export default function NewPostForm({
   append,
