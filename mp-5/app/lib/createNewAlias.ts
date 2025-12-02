@@ -3,7 +3,7 @@ import getCollection, { URL_COLLECTION } from "@/db";
 import { UrlProps } from "@/types";
 import getAllUrls from "./getAllUrls";
 
-export default async function createNewPost(
+export default async function createNewAlias(
     alias: string,
     url: string,
 ): Promise<UrlProps> {
